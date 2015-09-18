@@ -3,6 +3,7 @@
   "author": "Evan Hahn <me@evanhahn.com> (http://evanhahn.com)",
   "description": "Build Content Security Policy directives.",
   "version": "0.1.0",
+  "license": "MIT",
   "keywords": [
     "security",
     "content",
