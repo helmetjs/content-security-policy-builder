@@ -67,4 +67,15 @@ describe("builder", function () {
     assert.equal(split[0], "falco lombardi");
     assert.equal(split[1], "hey-einstein i'm on your side");
   });
+
+  it("throws errors when passed two keys of different types but the same names", function () {
+    assert.throws(function () {
+      builder({
+        directives: {
+          defaultSrc: "'self'",
+          "default-src": "falco.biz"
+        }
+      });
+    });
+  });
 });
