@@ -20,11 +20,7 @@ module.exports = function (options) {
 
     var combined = directive + " " + value;
 
-    if (directive === "default-src") {
-      result.unshift(combined);
-    } else {
-      result.push(combined);
-    }
+    result.push(combined);
 
     return result;
   }, []).join("; ");

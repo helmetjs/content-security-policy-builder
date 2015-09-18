@@ -20,14 +20,12 @@ describe("builder", function () {
       }
     });
 
-    var split = result.split("; ");
+    var split = result.split("; ").sort();
 
-    assert.equal(split.shift(), "default-src 'self'");
-
-    split.sort();
-    assert.equal(split.length, 2);
-    assert.equal(split[0], "playtime-is-over star fox");
-    assert.equal(split[1], "what-the heck");
+    assert.equal(split.length, 3);
+    assert.equal(split[0], "default-src 'self'");
+    assert.equal(split[1], "playtime-is-over star fox");
+    assert.equal(split[2], "what-the heck");
   });
 
   it("builds directives with dash-separated keys", function () {
@@ -39,14 +37,12 @@ describe("builder", function () {
       }
     });
 
-    var split = result.split("; ");
+    var split = result.split("; ").sort();
 
-    assert.equal(split.shift(), "default-src 'self'");
-
-    split.sort();
-    assert.equal(split.length, 2);
+    assert.equal(split.length, 3);
     assert.equal(split[0], "andross-has-ordered-us to take you down");
-    assert.equal(split[1], "do-a barrel roll");
+    assert.equal(split[1], "default-src 'self'");
+    assert.equal(split[2], "do-a barrel roll");
   });
 
   it("builds directives with a mix of key types", function () {
@@ -58,14 +54,12 @@ describe("builder", function () {
       }
     });
 
-    var split = result.split("; ");
+    var split = result.split("; ").sort();
 
-    assert.equal(split.shift(), "default-src 'self'");
-
-    split.sort();
-    assert.equal(split.length, 2);
-    assert.equal(split[0], "falco lombardi");
-    assert.equal(split[1], "hey-einstein i'm on your side");
+    assert.equal(split.length, 3);
+    assert.equal(split[0], "default-src 'self'");
+    assert.equal(split[1], "falco lombardi");
+    assert.equal(split[2], "hey-einstein i'm on your side");
   });
 
   it("throws errors when passed two keys of different types but the same names", function () {

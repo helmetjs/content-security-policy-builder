@@ -3,7 +3,7 @@ Content Security Policy builder
 
 Take an object and turn it into a Content Security Policy string. Useful for building Content Security Policy libraries.
 
-It can handle a lot of things you can you throw at it; `camelCased` or `dash-separated` directives, arrays or strings, et cetera. It always puts `default-src` first but the rest go later.
+It can handle a lot of things you can you throw at it; `camelCased` or `dash-separated` directives, arrays or strings, et cetera.
 
 Usage:
 
