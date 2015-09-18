@@ -18,7 +18,12 @@ module.exports = function (options) {
       value = value.join(" ");
     }
 
-    var combined = directive + " " + value;
+    var combined;
+    if (value) {
+      combined = directive + " " + value;
+    } else {
+      combined = directive;
+    }
 
     result.push(combined);
 

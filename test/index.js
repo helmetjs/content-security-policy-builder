@@ -62,6 +62,23 @@ describe("builder", function () {
     assert.equal(split[2], "hey-einstein i'm on your side");
   });
 
+  it("builds directives with empty values", function () {
+    var result = builder({
+      directives: {
+        i: '',
+        cant: [],
+        lose: ['']
+      }
+    });
+
+    var split = result.split("; ").sort();
+
+    assert.equal(split.length, 3);
+    assert.equal(split[0], "cant");
+    assert.equal(split[1], "i");
+    assert.equal(split[2], "lose");
+  });
+
   it("throws errors when passed two keys of different types but the same names", function () {
     assert.throws(function () {
       builder({
