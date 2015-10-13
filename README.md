@@ -12,7 +12,7 @@ var builder = require('content-security-policy-builder')
 
 // default-src 'self' default.com; script-src scripts.com; whatever-src something
 builder({
-  directive: {
+  directives: {
     defaultSrc: ["'self'", "default.com"],
     scriptSrc: "scripts.com"
     "whatever-src": "something"
