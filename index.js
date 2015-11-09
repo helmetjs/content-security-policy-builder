@@ -1,9 +1,22 @@
 var dashify = require("dashify");
 
 module.exports = function (options) {
-  var directives = options.directives;
+  var directives = options.directives || {};
+  var args = options.arguments || [];
+  var ctx = options.context || null;
 
   var keysSeen = {};
+
+  // Recursively handles a value to a string
+  function handle(value) {
+    if (Array.isArray(value))
+      return value.map(handle).join(' ');
+
+    if (typeof value === 'function')
+      return handle(value.apply(ctx, args));
+
+    return value;
+  }
 
   return Object.keys(directives).reduce(function (result, originalKey) {
     var directive = dashify(originalKey);
@@ -13,10 +26,7 @@ module.exports = function (options) {
     }
     keysSeen[directive] = true;
 
-    var value = directives[originalKey];
-    if (Array.isArray(value)) {
-      value = value.join(" ");
-    }
+    var value = handle(directives[originalKey]);
 
     var combined;
     if (value) {

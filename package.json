@@ -21,7 +21,8 @@
     "test": "mocha"
   },
   "devDependencies": {
-    "mocha": "^2.3.0"
+    "mocha": "^2.3.0",
+    "sinon": "^1.17.2"
   },
   "dependencies": {
     "dashify": "^0.1.0"

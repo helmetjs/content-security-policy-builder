@@ -15,7 +15,11 @@ builder({
   directives: {
     defaultSrc: ["'self'", "default.com"],
     scriptSrc: "scripts.com"
-    "whatever-src": "something"
-  }
-})
+    "whatever-src": "something",
+    "some-src": [
+      function(a, b) { return this + a + b } //foobarbaz
+    ]
+  },
+  arguments: ['bar', 'baz']
+});
 ```

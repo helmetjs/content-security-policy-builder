@@ -1,6 +1,7 @@
 var builder = require("..");
 
 var assert = require("assert");
+var sinon = require("sinon");
 
 describe("builder", function () {
   it("builds empty directives", function () {
@@ -50,16 +51,21 @@ describe("builder", function () {
       directives: {
         "hey-einstein": "i'm on your side",
         defaultSrc: "'self'",
-        falco: ["lombardi"]
+        falco: ["lombardi"],
+        crazy: [
+          "a",
+          function() { return "b" }
+        ]
       }
     });
 
     var split = result.split("; ").sort();
 
-    assert.equal(split.length, 3);
-    assert.equal(split[0], "default-src 'self'");
-    assert.equal(split[1], "falco lombardi");
-    assert.equal(split[2], "hey-einstein i'm on your side");
+    assert.equal(split.length, 4);
+    assert.equal(split[0], "crazy a b");
+    assert.equal(split[1], "default-src 'self'");
+    assert.equal(split[2], "falco lombardi");
+    assert.equal(split[3], "hey-einstein i'm on your side");
   });
 
   it("builds directives with empty values", function () {
@@ -77,6 +83,46 @@ describe("builder", function () {
     assert.equal(split[0], "cant");
     assert.equal(split[1], "i");
     assert.equal(split[2], "lose");
+  });
+
+  it("calls function-values with default arguments", function() {
+    var spy = sinon.spy();
+    var result = builder({
+      directives: {
+        foo: [
+          function() {
+            spy();
+            assert.equal(arguments.length, 0);
+            return "bar";
+          }
+        ]
+      }
+    });
+
+    assert.equal(spy.called, true);
+    assert.equal(result, 'foo bar');
+  });
+
+  it("calls function-values with provided arguments and context", function() {
+    var spy = sinon.spy();
+    var result = builder({
+      directives: {
+        foo: [
+          function(a, b) {
+            spy();
+            assert.equal(arguments.length, 2);
+            assert.equal(this, 'foo');
+            assert.equal(a, 'bar');
+            assert.equal(b, 'baz')
+            return "bar";
+          }
+        ]
+      },
+      arguments: ['bar', 'baz'],
+      context: 'foo'
+    });
+
+    assert.equal(spy.called, true);
   });
 
   it("throws errors when passed two keys of different types but the same names", function () {
