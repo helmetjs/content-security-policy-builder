@@ -8,7 +8,7 @@ It can handle a lot of things you can you throw at it; `camelCased` or `dash-sep
 Usage:
 
 ```javascript
-var builder = require('content-security-policy-builder')
+var builder = require("content-security-policy-builder")
 
 // default-src 'self' default.com; script-src scripts.com; whatever-src something
 builder({
