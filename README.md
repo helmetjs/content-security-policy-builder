@@ -1,5 +1,6 @@
 Content Security Policy builder
 ===============================
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 
 Take an object and turn it into a Content Security Policy string. Useful for building Content Security Policy libraries.
 
