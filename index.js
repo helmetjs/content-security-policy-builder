@@ -16,6 +16,8 @@ module.exports = function (options) {
     var value = directives[originalKey]
     if (Array.isArray(value)) {
       value = value.join(' ')
+    } else if (value === true) {
+      value = ''
     }
 
     var combined

@@ -67,16 +67,18 @@ describe('builder', function () {
       directives: {
         i: '',
         cant: [],
-        lose: ['']
+        lose: [''],
+        wow: true
       }
     })
 
     var split = result.split('; ').sort()
 
-    assert.equal(split.length, 3)
+    assert.equal(split.length, 4)
     assert.equal(split[0], 'cant')
     assert.equal(split[1], 'i')
     assert.equal(split[2], 'lose')
+    assert.equal(split[3], 'wow')
   })
 
   it('throws errors when passed two keys of different types but the same names', function () {
