@@ -20,15 +20,10 @@ module.exports = function (options) {
       value = ''
     }
 
-    var combined
     if (value) {
-      combined = directive + ' ' + value
+      return result.concat(directive + ' ' + value)
     } else {
-      combined = directive
+      return result.concat(directive)
     }
-
-    result.push(combined)
-
-    return result
   }, []).join('; ')
 }
