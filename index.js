@@ -25,5 +25,5 @@ module.exports = function (options) {
     } else {
       return result.concat(directive)
     }
-  }, []).join('; ')
+  }, []).join(';')
 }
