@@ -4,9 +4,7 @@ var assert = require('assert')
 
 describe('builder', function () {
   it('builds no directives', function () {
-    var result = builder({
-      directives: {}
-    })
+    var result = builder({ directives: {} })
 
     assert.equal(result, '')
   })
