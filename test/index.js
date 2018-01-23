@@ -19,11 +19,11 @@ describe('builder', function () {
     })
 
     var split = result.split('; ').sort()
-
-    assert.equal(split.length, 3)
-    assert.equal(split[0], "default-src 'self'")
-    assert.equal(split[1], 'playtime-is-over star fox')
-    assert.equal(split[2], 'what-the heck')
+    assert.deepEqual(split, [
+      "default-src 'self'",
+      'playtime-is-over star fox',
+      'what-the heck'
+    ])
   })
 
   it('builds directives with dash-separated keys', function () {
@@ -36,11 +36,11 @@ describe('builder', function () {
     })
 
     var split = result.split('; ').sort()
-
-    assert.equal(split.length, 3)
-    assert.equal(split[0], 'andross-has-ordered-us to take you down')
-    assert.equal(split[1], "default-src 'self'")
-    assert.equal(split[2], 'do-a barrel roll')
+    assert.deepEqual(split, [
+      'andross-has-ordered-us to take you down',
+      "default-src 'self'",
+      'do-a barrel roll'
+    ])
   })
 
   it('builds directives with a mix of key types', function () {
@@ -53,11 +53,11 @@ describe('builder', function () {
     })
 
     var split = result.split('; ').sort()
-
-    assert.equal(split.length, 3)
-    assert.equal(split[0], "default-src 'self'")
-    assert.equal(split[1], 'falco lombardi')
-    assert.equal(split[2], "hey-einstein i'm on your side")
+    assert.deepEqual(split, [
+      "default-src 'self'",
+      'falco lombardi',
+      "hey-einstein i'm on your side"
+    ])
   })
 
   it('builds directives with weird keys', function () {
@@ -70,11 +70,11 @@ describe('builder', function () {
     })
 
     var split = result.split('; ').sort()
-
-    assert.equal(split.length, 3)
-    assert.equal(split[0], 'allcaps YELLING')
-    assert.equal(split[1], 'inot-alwayscaps-nope ok')
-    assert.equal(split[2], 'lots--of----dashes wow')
+    assert.deepEqual(split, [
+      'allcaps YELLING',
+      'inot-alwayscaps-nope ok',
+      'lots--of----dashes wow'
+    ])
   })
 
   it('builds directives with empty values', function () {
@@ -88,12 +88,12 @@ describe('builder', function () {
     })
 
     var split = result.split('; ').sort()
-
-    assert.equal(split.length, 4)
-    assert.equal(split[0], 'cant')
-    assert.equal(split[1], 'i')
-    assert.equal(split[2], 'lose')
-    assert.equal(split[3], 'wow')
+    assert.deepEqual(split, [
+      'cant',
+      'i',
+      'lose',
+      'wow'
+    ])
   })
 
   it('does not include directives if the value is false', function () {
