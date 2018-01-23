@@ -18,6 +18,8 @@ module.exports = function (options) {
       value = value.join(' ')
     } else if (value === true) {
       value = ''
+    } else if (value === false) {
+      return result
     }
 
     if (value) {

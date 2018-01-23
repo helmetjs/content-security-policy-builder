@@ -79,6 +79,17 @@ describe('builder', function () {
     assert.equal(split[3], 'wow')
   })
 
+  it('does not include directives if the value is false', function () {
+    var result = builder({
+      directives: {
+        included: 'yes',
+        skipped: false
+      }
+    })
+
+    assert.equal(result, 'included yes')
+  })
+
   it('throws errors when passed two keys of different types but the same names', function () {
     assert.throws(function () {
       builder({
