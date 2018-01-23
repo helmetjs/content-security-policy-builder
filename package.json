@@ -25,9 +25,6 @@
     "mocha": "^2.5.3",
     "standard": "^7.1.2"
   },
-  "dependencies": {
-    "dashify": "^0.2.0"
-  },
   "standard": {
     "globals": [
       "describe",

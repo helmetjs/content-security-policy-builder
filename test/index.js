@@ -60,6 +60,23 @@ describe('builder', function () {
     assert.equal(split[2], "hey-einstein i'm on your side")
   })
 
+  it('builds directives with weird keys', function () {
+    var result = builder({
+      directives: {
+        'lots--of----dashes': 'wow',
+        'ALLCAPS': 'YELLING',
+        'InotALWAYScapsNOPE': 'ok'
+      }
+    })
+
+    var split = result.split('; ').sort()
+
+    assert.equal(split.length, 3)
+    assert.equal(split[0], 'allcaps YELLING')
+    assert.equal(split[1], 'inot-alwayscaps-nope ok')
+    assert.equal(split[2], 'lots--of----dashes wow')
+  })
+
   it('builds directives with empty values', function () {
     var result = builder({
       directives: {

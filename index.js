@@ -1,5 +1,3 @@
-var dashify = require('dashify')
-
 module.exports = function (options) {
   var directives = options.directives
 
@@ -28,4 +26,10 @@ module.exports = function (options) {
       return result.concat(directive)
     }
   }, []).join('; ')
+}
+
+function dashify (str) {
+  return str
+    .replace(/([a-z])([A-Z])/g, '$1-$2')
+    .toLowerCase()
 }
