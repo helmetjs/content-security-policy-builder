@@ -6,7 +6,7 @@ describe('builder', function () {
   it('builds no directives', function () {
     var result = builder({ directives: {} })
 
-    assert.equal(result, '')
+    assert.strictEqual(result, '')
   })
 
   it('builds directives with camelCased keys', function () {
@@ -19,7 +19,7 @@ describe('builder', function () {
     })
 
     var split = result.split('; ').sort()
-    assert.deepEqual(split, [
+    assert.deepStrictEqual(split, [
       "default-src 'self'",
       'playtime-is-over star fox',
       'what-the heck'
@@ -36,7 +36,7 @@ describe('builder', function () {
     })
 
     var split = result.split('; ').sort()
-    assert.deepEqual(split, [
+    assert.deepStrictEqual(split, [
       'andross-has-ordered-us to take you down',
       "default-src 'self'",
       'do-a barrel roll'
@@ -53,7 +53,7 @@ describe('builder', function () {
     })
 
     var split = result.split('; ').sort()
-    assert.deepEqual(split, [
+    assert.deepStrictEqual(split, [
       "default-src 'self'",
       'falco lombardi',
       "hey-einstein i'm on your side"
@@ -70,7 +70,7 @@ describe('builder', function () {
     })
 
     var split = result.split('; ').sort()
-    assert.deepEqual(split, [
+    assert.deepStrictEqual(split, [
       'allcaps YELLING',
       'inot-alwayscaps-nope ok',
       'lots--of----dashes wow'
@@ -88,7 +88,7 @@ describe('builder', function () {
     })
 
     var split = result.split('; ').sort()
-    assert.deepEqual(split, [
+    assert.deepStrictEqual(split, [
       'cant',
       'i',
       'lose',
@@ -104,7 +104,7 @@ describe('builder', function () {
       }
     })
 
-    assert.equal(result, 'included yes')
+    assert.strictEqual(result, 'included yes')
   })
 
   it('throws errors when passed two keys of different types but the same names', function () {
