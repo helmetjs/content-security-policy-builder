@@ -17,18 +17,30 @@
     "url": "git://github.com/helmetjs/content-security-policy-builder.git"
   },
   "bugs": "https://github.com/helmetjs/content-security-policy-builder/issues",
+  "main": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
+  "files": [
+    "LICENSE",
+    "README.md",
+    "dist/index.js",
+    "dist/index.d.ts"
+  ],
   "scripts": {
-    "pretest": "standard --fix",
-    "test": "mocha"
+    "pretest": "npm run lint",
+    "prepublishOnly": "npm run build",
+    "lint": "eslint --fix '**/*.ts'",
+    "test": "jest --config test/jest-config.json",
+    "clean": "rm -rf dist",
+    "build": "npm run clean && tsc"
   },
   "devDependencies": {
-    "mocha": "^6.1.4",
-    "standard": "^12.0.1"
-  },
-  "standard": {
-    "globals": [
-      "describe",
-      "it"
-    ]
+    "@types/jest": "^24.0.13",
+    "@typescript-eslint/eslint-plugin": "^1.9.0",
+    "@typescript-eslint/parser": "^1.9.0",
+    "eslint": "^5.16.0",
+    "eslint-config-helmet": "^0.2.0",
+    "jest": "^24.8.0",
+    "ts-jest": "^24.0.2",
+    "typescript": "^3.5.1"
   }
 }
