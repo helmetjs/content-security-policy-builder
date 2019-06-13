@@ -21,6 +21,9 @@
     "url": "https://github.com/helmetjs/content-security-policy-builder/issues",
     "email": "me@evanhahn.com"
   },
+  "engines": {
+    "node": ">=4.0.0"
+  },
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
   "files": [
