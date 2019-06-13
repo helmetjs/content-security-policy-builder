@@ -9,6 +9,7 @@
     "noUnusedParameters": true,
     "outDir": "./dist",
     "strict": true,
+    "lib": ["ES5", "ES2015.Collection"],
     "target": "es5"
   }
 }
