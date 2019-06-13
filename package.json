@@ -12,6 +12,7 @@
     "csp",
     "builder"
   ],
+  "homepage": "https://github.com/helmetjs/content-security-policy-builder",
   "repository": {
     "type": "git",
     "url": "git://github.com/helmetjs/content-security-policy-builder.git"
