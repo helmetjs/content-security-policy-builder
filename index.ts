@@ -33,5 +33,5 @@ export = function ({ directives }: PolicyBuilderOptions): string {
     } else {
       return result.concat(directive);
     }
-  }, []).join('; ');
+  }, []).join(';');
 }

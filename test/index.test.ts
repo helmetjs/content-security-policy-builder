@@ -16,7 +16,7 @@ describe('builder', () => {
       },
     });
 
-    const split = result.split('; ').sort();
+    const split = result.split(';').sort();
     expect(split).toStrictEqual([
       "default-src 'self'",
       'playtime-is-over star fox',
@@ -33,7 +33,7 @@ describe('builder', () => {
       },
     });
 
-    const split = result.split('; ').sort();
+    const split = result.split(';').sort();
     expect(split).toStrictEqual([
       'andross-has-ordered-us to take you down',
       "default-src 'self'",
@@ -50,7 +50,7 @@ describe('builder', () => {
       },
     });
 
-    const split = result.split('; ').sort();
+    const split = result.split(';').sort();
     expect(split).toStrictEqual([
       "default-src 'self'",
       'falco lombardi',
@@ -67,7 +67,7 @@ describe('builder', () => {
       },
     });
 
-    const split = result.split('; ').sort();
+    const split = result.split(';').sort();
     expect(split).toStrictEqual([
       'allcaps YELLING',
       'inot-alwayscaps-nope ok',
@@ -85,7 +85,7 @@ describe('builder', () => {
       },
     });
 
-    const split = result.split('; ').sort();
+    const split = result.split(';').sort();
     expect(split).toStrictEqual([
       'are',
       'empty',
