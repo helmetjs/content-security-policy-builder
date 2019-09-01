@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+### Changed
+- Dropped support for Node <8
+
 ## 2.1.0 - 2019-06-13
 ### Added
 - Added TypeScript type definitions. See [#6](https://github.com/helmetjs/content-security-policy-builder/issues/6)
