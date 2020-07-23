@@ -21,3 +21,5 @@ builder({
   }
 })
 ```
+
+This module is considered "complete". I expect to continue maintenance if needed, but I don't plan to add features or make breaking changes.
