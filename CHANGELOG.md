@@ -6,6 +6,7 @@
 
 - Fixed bug where names on `Object.prototype` didn't work
 - Marked inputs as `Readonly` (TypeScript-only)
+- Shrink package size a bit
 
 ## 2.1.0 - 2019-06-13
 

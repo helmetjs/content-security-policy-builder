@@ -1,7 +1,3 @@
-function dashify(str: string) {
-  return str.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase();
-}
-
 interface PolicyBuilderOptions {
   directives: Readonly<Record<string, string[] | string | boolean>>;
 }
@@ -9,29 +5,29 @@ interface PolicyBuilderOptions {
 export = function ({ directives }: Readonly<PolicyBuilderOptions>): string {
   const namesSeen = new Set<string>();
 
-  return Object.keys(directives)
-    .reduce<string[]>((result, originalName) => {
-      const name = dashify(originalName);
+  const result: string[] = [];
 
-      if (namesSeen.has(name)) {
-        throw new Error(`${originalName} is specified more than once`);
-      }
-      namesSeen.add(name);
+  Object.keys(directives).forEach((originalName) => {
+    const name = originalName.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase();
 
-      let value = directives[originalName];
-      if (Array.isArray(value)) {
-        value = value.join(" ");
-      } else if (value === true) {
-        value = "";
-      } else if (value === false) {
-        return result;
-      }
+    if (namesSeen.has(name)) {
+      throw new Error(`${originalName} is specified more than once`);
+    }
+    namesSeen.add(name);
 
-      if (value) {
-        return result.concat(`${name} ${value}`);
-      } else {
-        return result.concat(name);
-      }
-    }, [])
-    .join("; ");
+    let value = directives[originalName];
+    if (Array.isArray(value)) {
+      value = value.join(" ");
+    } else if (value === true) {
+      value = "";
+    }
+
+    if (value) {
+      result.push(`${name} ${value}`);
+    } else if (value !== false) {
+      result.push(name);
+    }
+  });
+
+  return result.join("; ");
 };
