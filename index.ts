@@ -7,18 +7,18 @@ interface PolicyBuilderOptions {
 }
 
 export = function ({ directives }: Readonly<PolicyBuilderOptions>): string {
-  const keysSeen = new Set<string>();
+  const namesSeen = new Set<string>();
 
   return Object.keys(directives)
-    .reduce<string[]>((result, originalKey) => {
-      const directive = dashify(originalKey);
+    .reduce<string[]>((result, originalName) => {
+      const name = dashify(originalName);
 
-      if (keysSeen.has(directive)) {
-        throw new Error(`${originalKey} is specified more than once`);
+      if (namesSeen.has(name)) {
+        throw new Error(`${originalName} is specified more than once`);
       }
-      keysSeen.add(directive);
+      namesSeen.add(name);
 
-      let value = directives[originalKey];
+      let value = directives[originalName];
       if (Array.isArray(value)) {
         value = value.join(" ");
       } else if (value === true) {
@@ -28,9 +28,9 @@ export = function ({ directives }: Readonly<PolicyBuilderOptions>): string {
       }
 
       if (value) {
-        return result.concat(`${directive} ${value}`);
+        return result.concat(`${name} ${value}`);
       } else {
-        return result.concat(directive);
+        return result.concat(name);
       }
     }, [])
     .join("; ");
