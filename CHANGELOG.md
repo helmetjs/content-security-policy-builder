@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+### Changed
+
+- Fixed bug where names on `Object.prototype` didn't work
+
 ## 2.1.0 - 2019-06-13
 
 ### Added

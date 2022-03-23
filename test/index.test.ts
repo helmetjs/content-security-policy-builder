@@ -100,6 +100,17 @@ describe("builder", () => {
     expect(result).toStrictEqual("included yes");
   });
 
+  it("allows directives with names on Object.prototype", () => {
+    const result = builder({
+      directives: {
+        constructor: "foo",
+        hasOwnProperty: "bar",
+      },
+    });
+
+    expect(result).toStrictEqual("constructor foo; has-own-property bar");
+  });
+
   it("throws errors when passed two keys of different types but the same names", () => {
     expect(() => {
       builder({

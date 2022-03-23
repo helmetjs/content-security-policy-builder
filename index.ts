@@ -7,16 +7,16 @@ interface PolicyBuilderOptions {
 }
 
 export = function ({ directives }: PolicyBuilderOptions): string {
-  const keysSeen: { [directive: string]: boolean } = {};
+  const keysSeen = new Set<string>();
 
   return Object.keys(directives)
     .reduce<string[]>((result, originalKey) => {
       const directive = dashify(originalKey);
 
-      if (keysSeen[directive]) {
+      if (keysSeen.has(directive)) {
         throw new Error(`${originalKey} is specified more than once`);
       }
-      keysSeen[directive] = true;
+      keysSeen.add(directive);
 
       let value = directives[originalKey];
       if (Array.isArray(value)) {
