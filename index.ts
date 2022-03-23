@@ -3,10 +3,10 @@ function dashify(str: string) {
 }
 
 interface PolicyBuilderOptions {
-  directives: { [directive: string]: string[] | string | boolean };
+  directives: Readonly<Record<string, string[] | string | boolean>>;
 }
 
-export = function ({ directives }: PolicyBuilderOptions): string {
+export = function ({ directives }: Readonly<PolicyBuilderOptions>): string {
   const keysSeen = new Set<string>();
 
   return Object.keys(directives)

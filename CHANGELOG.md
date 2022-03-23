@@ -5,6 +5,7 @@
 ### Changed
 
 - Fixed bug where names on `Object.prototype` didn't work
+- Marked inputs as `Readonly` (TypeScript-only)
 
 ## 2.1.0 - 2019-06-13
 
