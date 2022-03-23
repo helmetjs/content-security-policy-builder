@@ -2,7 +2,7 @@
   "name": "content-security-policy-builder",
   "author": "Evan Hahn <me@evanhahn.com> (https://evanhahn.com)",
   "description": "Build Content Security Policy directives.",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "license": "MIT",
   "keywords": [
     "security",
