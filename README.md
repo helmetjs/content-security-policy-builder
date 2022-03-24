@@ -1,7 +1,5 @@
 # Content Security Policy builder
 
-[![Build Status](https://travis-ci.org/helmetjs/content-security-policy-builder.svg?branch=master)](https://travis-ci.org/helmetjs/content-security-policy-builder)
-
 Take an object and turn it into a Content Security Policy string.
 
 It can handle a lot of things you can you throw at it; `camelCased` or `dash-separated` directives, arrays or strings, et cetera.
