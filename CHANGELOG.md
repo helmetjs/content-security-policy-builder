@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+### Removed
+
+- **Breaking:** Drop support for old Node versions. Node 18+ is now required
+
 ## 2.1.1 - 2022-03-23
 
 ### Changed
