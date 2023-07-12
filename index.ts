@@ -2,12 +2,12 @@ interface PolicyBuilderOptions {
   directives: Readonly<Record<string, string[] | string | boolean>>;
 }
 
-export = function ({ directives }: Readonly<PolicyBuilderOptions>): string {
+export = ({ directives }: Readonly<PolicyBuilderOptions>): string => {
   const namesSeen = new Set<string>();
 
   const result: string[] = [];
 
-  Object.keys(directives).forEach((originalName) => {
+  Object.entries(directives).forEach(([originalName, value]) => {
     const name = originalName.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase();
 
     if (namesSeen.has(name)) {
@@ -15,7 +15,6 @@ export = function ({ directives }: Readonly<PolicyBuilderOptions>): string {
     }
     namesSeen.add(name);
 
-    let value = directives[originalName];
     if (Array.isArray(value)) {
       value = value.join(" ");
     } else if (value === true) {
