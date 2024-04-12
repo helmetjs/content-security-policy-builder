@@ -1,5 +1,5 @@
-import assert = require("node:assert/strict");
-import builder = require("./index");
+import assert from "node:assert/strict";
+import builder from "./index";
 
 const test = (
   message: string,
