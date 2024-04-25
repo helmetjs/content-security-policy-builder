@@ -24,14 +24,22 @@
   "engines": {
     "node": ">=18.0.0"
   },
+  "sideEffects": false,
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
   "files": [
     "LICENSE",
     "README.md",
     "CHANGELOG.md",
-    "dist/index.js",
-    "dist/index.d.ts"
+    "dist"
   ],
   "scripts": {
     "pretest": "npm run lint",
@@ -41,7 +49,8 @@
     "lint:prettier": "prettier --check .",
     "format": "prettier --write .",
     "clean": "rm -rf dist",
-    "build": "npm run clean && tsc",
+    "build": "npm run clean && tsc && npm run build:esm",
+    "build:esm": "sed 's/module.exports =/export default/' dist/index.js > dist/index.mjs",
     "test": "ts-node test.ts"
   },
   "devDependencies": {
