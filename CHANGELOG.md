@@ -1,6 +1,10 @@
 # Changelog
 
-## Unreleased
+## 2.2.0 - 2024-04-25
+
+### Added
+
+- Added ECMAScript Module support
 
 ### Removed
 
