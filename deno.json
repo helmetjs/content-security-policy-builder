@@ -1,0 +1,23 @@
+{
+  "tasks": {
+    "npm": "deno run -A build-npm.ts",
+    "clean": "rm -rf dist",
+    "test": "deno task clean && deno task test:fmt && deno task test:lint && deno test",
+    "test:fmt": "deno fmt --check",
+    "test:lint": "deno lint"
+  },
+  "compilerOptions": {
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noUncheckedIndexedAccess": true,
+    "useUnknownInCatchVariables": true
+  },
+  "fmt": {
+    "exclude": ["dist"]
+  },
+  "lint": {
+    "exclude": ["dist"]
+  }
+}

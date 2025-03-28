@@ -2,7 +2,9 @@ interface PolicyBuilderOptions {
   directives: Readonly<Record<string, string[] | string | boolean>>;
 }
 
-export = ({ directives }: Readonly<PolicyBuilderOptions>): string => {
+export default function buildContentSecurityPolicy(
+  { directives }: Readonly<PolicyBuilderOptions>,
+): string {
   const namesSeen = new Set<string>();
 
   const result: string[] = [];
@@ -29,4 +31,4 @@ export = ({ directives }: Readonly<PolicyBuilderOptions>): string => {
   });
 
   return result.join("; ");
-};
+}

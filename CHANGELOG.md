@@ -22,7 +22,8 @@
 
 ### Added
 
-- Added TypeScript type definitions. See [#6](https://github.com/helmetjs/content-security-policy-builder/issues/6)
+- Added TypeScript type definitions. See
+  [#6](https://github.com/helmetjs/content-security-policy-builder/issues/6)
 - Created a changelog
 
 ### Changed

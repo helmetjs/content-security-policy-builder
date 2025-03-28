@@ -1,14 +1,16 @@
-import assert from "node:assert/strict";
-import builder from "./index";
+import { assertEquals, assertThrows } from "jsr:@std/assert";
+import builder from "./mod.ts";
 
 const test = (
   message: string,
   directives: Readonly<Record<string, string[] | string | boolean>>,
   expected: ReadonlyArray<string>,
 ) => {
-  const result = builder({ directives });
-  const normalized = result.split("; ").sort();
-  assert.deepStrictEqual(normalized, expected, message);
+  Deno.test(message, () => {
+    const result = builder({ directives });
+    const normalized = result.split("; ").sort();
+    assertEquals(normalized, expected, message);
+  });
 };
 
 test("no directives", {}, [""]);
@@ -86,8 +88,10 @@ test(
   ["constructor foo", "has-own-property bar"],
 );
 
-assert.throws(() => {
-  builder({
-    directives: { defaultSrc: "'self'", "default-src": "falco.biz" },
+Deno.test("throws when passed two keys of different types but the same names", () => {
+  assertThrows(() => {
+    builder({
+      directives: { defaultSrc: "'self'", "default-src": "falco.biz" },
+    });
   });
-}, "throws when passed two keys of different types but the same names");
+});
