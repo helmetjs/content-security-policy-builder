@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+### Changed
+
+- Arrays are now readonly. This is a TypeScript-only change
+
 ## 2.2.0 - 2024-04-25
 
 ### Added

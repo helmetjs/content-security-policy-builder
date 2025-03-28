@@ -1,5 +1,7 @@
 interface PolicyBuilderOptions {
-  directives: Readonly<Record<string, string[] | string | boolean>>;
+  directives: Readonly<
+    Record<string, ReadonlyArray<string> | string | boolean>
+  >;
 }
 
 export default function buildContentSecurityPolicy(
