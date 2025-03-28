@@ -6,8 +6,14 @@ const test = (
   directives: Readonly<Record<string, string[] | string | boolean>>,
   expected: ReadonlyArray<string>,
 ) => {
-  Deno.test(message, () => {
+  Deno.test(`${message} (as object)`, () => {
     const result = builder({ directives });
+    const normalized = result.split("; ").sort();
+    assertEquals(normalized, expected, message);
+  });
+
+  Deno.test(`${message} (as Map)`, () => {
+    const result = builder({ directives: new Map(Object.entries(directives)) });
     const normalized = result.split("; ").sort();
     assertEquals(normalized, expected, message);
   });

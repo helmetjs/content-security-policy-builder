@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Added
+
+- `Map`s are now supported as arguments
+
 ### Changed
 
 - Arrays are now readonly. This is a TypeScript-only change

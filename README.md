@@ -19,6 +19,14 @@ builder({
     objectSrc: true,
   },
 });
+
+// default-src 'self'; whatever-src something
+builder({
+  directives: new Map([
+    ["defaultSrc", ["'self'", "default.com"]],
+    ["whatever-src", "something"],
+  ]),
+});
 ```
 
 This module is considered complete. I expect to continue maintenance if needed,

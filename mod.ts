@@ -1,36 +1,43 @@
+type DirectiveValue = ReadonlyArray<string> | string | boolean;
+
 interface PolicyBuilderOptions {
   directives: Readonly<
-    Record<string, ReadonlyArray<string> | string | boolean>
+    | Record<string, DirectiveValue>
+    | Map<string, DirectiveValue>
   >;
 }
 
 export default function buildContentSecurityPolicy(
   { directives }: Readonly<PolicyBuilderOptions>,
 ): string {
-  const namesSeen = new Set<string>();
-
   const result: string[] = [];
 
-  Object.entries(directives).forEach(([originalName, value]) => {
-    const name = originalName.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase();
+  const entries: Iterable<[string, DirectiveValue]> = directives instanceof Map
+    ? directives.entries()
+    : Object.entries(directives);
+  const namesSeen = new Set<string>();
+
+  for (const [rawName, rawValue] of entries) {
+    const name = rawName.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase();
 
     if (namesSeen.has(name)) {
-      throw new Error(`${originalName} is specified more than once`);
+      throw new Error(`${rawName} is specified more than once`);
     }
     namesSeen.add(name);
 
-    if (Array.isArray(value)) {
-      value = value.join(" ");
-    } else if (value === true) {
-      value = "";
+    if (rawValue === true) {
+      result.push(name);
+      continue;
     }
 
-    if (value) {
-      result.push(`${name} ${value}`);
-    } else if (value !== false) {
-      result.push(name);
+    if (rawValue === false) {
+      continue;
     }
-  });
+
+    const value = typeof rawValue === "string" ? rawValue : rawValue.join(" ");
+
+    result.push(value ? `${name} ${value}` : name);
+  }
 
   return result.join("; ");
 }
