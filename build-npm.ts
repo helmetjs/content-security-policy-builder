@@ -14,7 +14,7 @@ await build({
     description: "Build Content Security Policy directives.",
     version: "2.3.0",
     license: "MIT",
-    keywords: ["security", "content", "security", "policy", "csp", "builder"],
+    keywords: ["security", "content", "policy", "csp", "builder"],
     homepage: "https://github.com/helmetjs/content-security-policy-builder",
     repository: {
       type: "git",
